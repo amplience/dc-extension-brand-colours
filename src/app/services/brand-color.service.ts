@@ -32,7 +32,7 @@ export class BrandColorService {
 
       this.activeColor = await sdk.field.getValue();
       this.selected = (this.activeColor == null) ? null : { name: this.activeColor, color: this.activeColor };
-      this.params = sdk.params.instance as BrandColorParameters;
+      this.params = { ...sdk.params.installation, ...sdk.params.instance } as BrandColorParameters;
 
       const client = new ContentClient({
         account: this.params.account || 'dummy',
