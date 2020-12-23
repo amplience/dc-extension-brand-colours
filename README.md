@@ -6,26 +6,65 @@
 
 This extension allows users to pick colours from a predefined set of brand colours in some content item. This makes it easier to pick colours relevant to the brand's identity, rather than freely entering any colour and having to copy/paste the values around.
 
-The field title and brand colours you desire are passed in via a parameter:
-
-```json
-"params": {
-  "title": "Heading Colour",
-  "contentID": "1f279ce8-bd84-4313-aa8c-02e853cc4ebd"
-}
-```
-
-A selected brand colour is stored in the final content item as a string literal containing that colour. Colours can be referenced by either name or literal value, the former being useful when you feel you might change a colour in the future. 
-
-Note: There is no other identifying information or linking - so a change to an existing brand colour will not update any existing assignments. Also as a result, when there are two identical colours in the set, the extension will *always pick the first name on load!*
+## How to install
 
 ## Brand Colours Schema
 
 The schema for the palette content item that this consumes is included as `brandColours.json`. This is essentially a list of colours that can be chosen from using this extension. Install it in DC, and create some brand colour content items so that you can use them with this extension.
 
+### Register Extension
+
+This extension needs to be [registered](https://amplience.com/docs/development/registeringextensions.html) against a Hub with in the Dynamic Content application (Developer -> Extensions), for it to load within that Hub.
+
+#### Setup
+
+![Setup](media/setup.png)
+
+* Category: Content Field
+* Label: Brand Colours _(this will appear as the tab title in the Dashboard)_
+* Name: brand-colours _(needs to be unique with the Hub)_
+* URL: [https://dc-extension-brand-colours.amplience.net](https://dc-extension-brand-colours.amplience.net)
+* Description: Brand Colours _(can be left blank, if you wish)_
+
+To use the application the following permissions must be enabled:
+
+Note:
+You can use our deployed version of this extension (builds from the "production" branch) -
+
+[https://dc-extension-brand-colours.amplience.net](https://dc-extension-brand-colours.amplience.net)
+
+_As this is an open source project you're welcome to host your own "fork" of this project. You can use any standard static hosting service (Netlify, Amplify, Vercel, etc.) if you wish._
+
+##### Permissions
+
+![Permissions](media/permissions.png)
+
+Sandbox permissions:
+- Allow same origin
+
+## Example extension snippet
+
+```json
+{
+  "type": "string",
+  "ui:extension": {
+    "name": "brand-colours",
+    "params": {
+      "title": "Heading Colour",
+      "contentID": "1f279ce8-bd84-4313-aa8c-02e853cc4ebd"
+    }
+  }
+}
+```
+
+A selected brand colour is stored in the final content item as a string literal containing that colour. Colours can be referenced by either name or literal value, the former being useful when you feel you might change a colour in the future.
+
+Note: There is no other identifying information or linking - so a change to an existing brand colour will not update any existing assignments. Also as a result, when there are two identical colours in the set, the extension will *always pick the first name on load!*
+
+
 ## Snippet for Brand Colour Field and Configuration
 
-The brand colours extension just wraps around a simple string field. The ID for the associated brand colours content item should be provided as a paramater.
+The brand colours extension just wraps around a simple string field. The ID for the associated brand colours content item should be provided as a parameter.
 
 If extensions on your repository don't go through a VSE, you also need to provide your account name as `account`. This can be found in the DC frontend URL when logged in.
 
