@@ -1,6 +1,6 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 @import "app/core/core";
-@include mat-core();
+@include mat.core();
 
 $primary-pal: (
     50 : #e1f3fc,
@@ -35,9 +35,9 @@ $primary-pal: (
     )
 );
 
-$primary: mat-palette($primary-pal);
-$accent: mat-palette($primary-pal);
+$primary: mat.define-palette($primary-pal);
+$accent: mat.define-palette($primary-pal);
 
-$theme: mat-light-theme($primary, $accent);
+$theme: mat.define-light-theme($primary, $accent);
 
-@include angular-material-theme($theme);
+@include mat.all-component-themes($theme);
