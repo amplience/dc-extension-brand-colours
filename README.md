@@ -121,6 +121,13 @@ Build and publish to the `gh-pages` branch using `npm run publish`. If you are u
 
 Push the `gh-pages` branch to your fork, and then enable github pages on the repository, and you should be all set.
 
+## Build
+
+This project requires Node 16.x or 18.x to build. Tested with Node 16.16.0, NPM 8.11.0.
+
+`npm i`
+`npm run build`
+
 ## Storybook
 
 This project uses storybook to allow visual testing and development of the components in a few example contexts. You can start the storybook server by running `npm run storybook`.
