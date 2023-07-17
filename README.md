@@ -1,5 +1,3 @@
-[![Amplience Dynamic Content](media/header.png)](https://amplience.com/dynamic-content)
-
 ![Dynamic Content Brand Colours Extension](media/screenshot.png)
 
 # Dynamic Content Brand Colours Extension
