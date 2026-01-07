@@ -39,9 +39,8 @@ export class BrandColorService {
         stagingEnvironment: sdk.stagingEnvironment
       });
 
-      // we prefer to use deliveryKey if provided
-      // if not we'll use the contentID instead
-      // at least one of these must be provided
+      // We prefer to use deliveryKey over contentID.
+      // At least one of these must be provided
       if (!this.params.deliveryKey && !this.params.contentID) {
         throw new Error('A Content ID or Delivery Key must be provided in the installation parameters.');
       }
