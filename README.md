@@ -97,6 +97,22 @@ If you want to use names rather than the literal colours for values, just includ
 }
 ```
 
+You might wish to load the content item by delivery key instead of content ID to prevent maintaining different config in different hubs. If you would like to load the colours content item by `deliveryKey` instead of `contentID`, specify a delivery key:
+
+```json
+{
+  "type": "string",
+  "ui:extension": {
+    "name": "brand-colours",
+    "params": {
+      "title": "title",
+      "contentID": "1f279ce8-bd84-4313-aa8c-02e853cc4ebd",
+      "deliveryKey": "config/brandcolours" # this will be used instead of contentID
+    }
+  }
+}
+```
+
 The included content schema also lets you split colours into named groups. You can pass in a paramater to select a selection of groups to display the colours for:
 
 ```json
