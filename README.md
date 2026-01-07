@@ -97,7 +97,9 @@ If you want to use names rather than the literal colours for values, just includ
 }
 ```
 
-You might wish to load the content item by delivery key instead of content ID to prevent maintaining different config in different hubs. To do this, specify a `deliveryKey` instead:
+To load the colours content item by delivery key, use `deliveryKey` instead of `contentID`.
+
+> ⚠️ **This will require Content Delivery V2 to be enabled in your hub.**
 
 ```json
 {
@@ -107,6 +109,22 @@ You might wish to load the content item by delivery key instead of content ID to
     "params": {
       "title": "title",
       "deliveryKey": "config/brandcolours"
+    }
+  }
+}
+```
+
+If extensions on your repository don't go through a VSE, you also need to provide your hub name as `hubName`. This can be found Hub Settings -> Properties.
+
+```json
+{
+  "type": "string",
+  "ui:extension": {
+    "name": "brand-colours",
+    "params": {
+      "title": "title",
+      "deliveryKey": "config/brandcolours",
+      "hubName": "hubname"
     }
   }
 }
