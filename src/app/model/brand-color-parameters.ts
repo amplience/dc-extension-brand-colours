@@ -7,6 +7,7 @@ interface BrandColorParameters extends Params {
   account?: string;
   useNames?: boolean;
   groups?: string[];
+  hubName?: string;
 }
 
 export { BrandColorParameters };
