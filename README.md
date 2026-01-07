@@ -139,6 +139,7 @@ Push the `gh-pages` branch to your fork, and then enable github pages on the rep
 
 This project requires Node 16.x or 18.x to build. Tested with Node 16.16.0, NPM 8.11.0.
 
+`nvm use`
 `npm i`
 `npm run build`
 
