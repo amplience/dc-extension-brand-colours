@@ -36,10 +36,16 @@ export class BrandColorService {
 
       const client = new ContentClient({
         account: this.params.account || 'dummy',
-        stagingEnvironment: sdk.stagingEnvironment
+        stagingEnvironment: sdk.stagingEnvironment,
+        hubName: this.params.account || 'dummy'
       });
 
-      this.colors = (await client.getContentItem(this.params.contentID) as any).body as BrandColors;
+      if (this.params.deliveryKey) {
+        this.colors = (await client.getContentItemByKey(this.params.deliveryKey) as any).body as BrandColors;
+      } else {
+        this.colors = (await client.getContentItem(this.params.contentID) as any).body as BrandColors;
+      }
+
       this.sdk = sdk;
 
       this.prepareColors();
