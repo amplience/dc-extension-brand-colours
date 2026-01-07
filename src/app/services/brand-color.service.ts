@@ -36,10 +36,16 @@ export class BrandColorService {
 
       const client = new ContentClient({
         account: this.params.account || 'dummy',
-        stagingEnvironment: sdk.stagingEnvironment,
-        hubName: this.params.account || 'dummy'
+        hubName: this.params.account || 'dummy',
+        stagingEnvironment: sdk.stagingEnvironment
       });
 
+      // we prefer to use deliveryKey if provided
+      // if not we'll use the contentID instead
+      // at least one of these must be provided
+      if (!this.params.deliveryKey && !this.params.contentID) {
+        throw new Error('A Content ID or Delivery Key must be provided in the installation parameters.');
+      }
       if (this.params.deliveryKey) {
         this.colors = (await client.getContentItemByKey(this.params.deliveryKey) as any).body as BrandColors;
       } else {

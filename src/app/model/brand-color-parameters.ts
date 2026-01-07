@@ -2,7 +2,7 @@ import { Params } from 'dc-extensions-sdk';
 
 interface BrandColorParameters extends Params {
   title?: string;
-  contentID: string;
+  contentID?: string;
   deliveryKey?: string;
   account?: string;
   useNames?: boolean;
