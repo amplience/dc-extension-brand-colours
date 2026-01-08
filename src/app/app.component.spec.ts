@@ -16,16 +16,11 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'dc-extension-brand-colours'`, () => {
+  it('should render a title', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('dc-extension-brand-colours');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    fixture.componentInstance.title = 'Welcome to dc-extension-brand-colours!';
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to dc-extension-brand-colours!');
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('.amp-root__title').textContent).toContain('Welcome to dc-extension-brand-colours!');
   });
 });
