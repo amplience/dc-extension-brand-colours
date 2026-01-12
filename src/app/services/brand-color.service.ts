@@ -34,12 +34,22 @@ export class BrandColorService {
       this.selected = (this.activeColor == null) ? null : { name: this.activeColor, color: this.activeColor };
       this.params = { ...sdk.params.installation, ...sdk.params.instance } as BrandColorParameters;
 
-      const client = new ContentClient({
-        account: this.params.account || 'dummy',
-        stagingEnvironment: sdk.stagingEnvironment
-      });
+      if (this.params.deliveryKey) {
+        // use v2 api when using deliveryKey
+        const client = new ContentClient({
+          hubName: this.params.hubName || 'dummy',
+          stagingEnvironment: sdk.stagingEnvironment
+        });
+        this.colors = (await client.getContentItemByKey(this.params.deliveryKey) as any).body as BrandColors;
+      } else {
+        // use v1 api when using contentID
+        const client = new ContentClient({
+          account: this.params.account || 'dummy',
+          stagingEnvironment: sdk.stagingEnvironment
+        });
+        this.colors = (await client.getContentItem(this.params.contentID) as any).body as BrandColors;
+      }
 
-      this.colors = (await client.getContentItem(this.params.contentID) as any).body as BrandColors;
       this.sdk = sdk;
 
       this.prepareColors();

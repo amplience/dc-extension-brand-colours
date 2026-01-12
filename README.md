@@ -1,5 +1,3 @@
-[![Amplience Dynamic Content](media/header.png)](https://amplience.com/dynamic-content)
-
 ![Dynamic Content Brand Colours Extension](media/screenshot.png)
 
 # Dynamic Content Brand Colours Extension
@@ -99,6 +97,39 @@ If you want to use names rather than the literal colours for values, just includ
 }
 ```
 
+To load the colours content item by delivery key, use `deliveryKey` instead of `contentID`.
+
+> ⚠️ **This will require Content Delivery V2 to be enabled in your hub.**
+
+```json
+{
+  "type": "string",
+  "ui:extension": {
+    "name": "brand-colours",
+    "params": {
+      "title": "title",
+      "deliveryKey": "config/brandcolours"
+    }
+  }
+}
+```
+
+If extensions on your repository don't go through a VSE, you also need to provide your hub name as `hubName`. This can be found Hub Settings -> Properties.
+
+```json
+{
+  "type": "string",
+  "ui:extension": {
+    "name": "brand-colours",
+    "params": {
+      "title": "title",
+      "deliveryKey": "config/brandcolours",
+      "hubName": "hubname"
+    }
+  }
+}
+```
+
 The included content schema also lets you split colours into named groups. You can pass in a paramater to select a selection of groups to display the colours for:
 
 ```json
@@ -125,6 +156,7 @@ Push the `gh-pages` branch to your fork, and then enable github pages on the rep
 
 This project requires Node 16.x or 18.x to build. Tested with Node 16.16.0, NPM 8.11.0.
 
+`nvm use`
 `npm i`
 `npm run build`
 
