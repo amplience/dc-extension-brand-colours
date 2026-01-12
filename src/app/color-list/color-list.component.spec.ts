@@ -16,6 +16,7 @@ describe('ColorListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ColorListComponent);
     component = fixture.componentInstance;
+    component.colors = { name: '', groups: [], colors: [] };
     fixture.detectChanges();
   });
 
